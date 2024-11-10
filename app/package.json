@@ -60,7 +60,7 @@
     "chalk": "^4.1.0",
     "express": "^4.17.1",
     "open": "^8.0.8",
-    "playwright-chromium": "^1.30.0",
+    "playwright-firefox": "^1.30.0",
     "update-notifier": "^4.1.0",
     "yargs": "^15.4.0"
   }

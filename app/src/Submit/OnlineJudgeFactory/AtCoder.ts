@@ -16,7 +16,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Page } from "playwright-chromium";
+import { Page } from "playwright-firefox";
 import OnlineJudge from "./OnlineJudge";
 import { OnlineJudgeName } from "../../Config/Types/OnlineJudgeName";
 
@@ -39,6 +39,7 @@ export default class AtCoder extends OnlineJudge {
       await page.click("#submit");
       return true;
     } catch (e) {
+      console.log(e);
       return false;
     }
   }

@@ -16,7 +16,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { chromium, ChromiumBrowser, ChromiumBrowserContext, Page } from "playwright-chromium";
+import { firefox, FirefoxBrowser, BrowserContext, Page } from "playwright-firefox";
 import * as fs from "fs";
 import * as Path from "path";
 import { exit } from "process";
@@ -87,14 +87,14 @@ export default abstract class OnlineJudge {
     return parsedSession.data;
   }
 
-  async restoreSession(browser: ChromiumBrowser): Promise<ChromiumBrowserContext> {
+  async restoreSession(browser: FirefoxBrowser): Promise<BrowserContext> {
     const storageState = this.getSession();
     const options: {
       userAgent: string;
       viewport: null;
       storageState?: StorageState;
     } = {
-      userAgent: "chrome",
+      userAgent: "firefox",
       viewport: null
     };
     if (storageState) options.storageState = storageState;
@@ -102,7 +102,7 @@ export default abstract class OnlineJudge {
     return context;
   }
 
-  async saveSession(context: ChromiumBrowserContext): Promise<void> {
+  async saveSession(context: BrowserContext): Promise<void> {
     const storageState = await context.storageState();
     if (!fs.existsSync(GlobalConstants.cpboosterHome)) {
       fs.mkdirSync(GlobalConstants.cpboosterHome, { recursive: true });
@@ -125,7 +125,7 @@ export default abstract class OnlineJudge {
     );
   }
 
-  async closeAllOtherTabs(context: ChromiumBrowserContext): Promise<void> {
+  async closeAllOtherTabs(context: BrowserContext): Promise<void> {
     const pages = context.pages();
     for (let i = 1; i < pages.length; i++) {
       pages[i].close();
@@ -147,7 +147,7 @@ export default abstract class OnlineJudge {
       if (useUserDefaultBrowser) {
         await open(url);
       } else {
-        const browser = await chromium.launch({ headless: false });
+        const browser = await firefox.launch({ headless: false });
         const context = await this.restoreSession(browser);
         context.on("page", (_) => this.closeAllOtherTabs(context));
         const pages = context.pages();
@@ -162,7 +162,7 @@ export default abstract class OnlineJudge {
   }
 
   async login(): Promise<void> {
-    const browser = await chromium.launch({ headless: false });
+    const browser = await firefox.launch({ headless: false });
     const context = await this.restoreSession(browser);
 
     context.on("page", (_) => this.closeAllOtherTabs(context));
@@ -201,7 +201,7 @@ export default abstract class OnlineJudge {
       }
     }
 
-    const browser = await chromium.launch({ headless: true });
+    const browser = await firefox.launch({ headless: true });
     const context = await this.restoreSession(browser);
 
     const pages = context.pages();
@@ -237,7 +237,7 @@ export default abstract class OnlineJudge {
           // waiting for half a second also fixes the error:
           // -> route.continue: Target page, context or browser has been closedError
           // when you submit for the very first time after installing cpbooster
-          //await new Promise((resolve) => setTimeout(resolve, 500));
+          // await new Promise((resolve) => setTimeout(resolve, 500));
           await this.openBrowserInUrl(page.url(), config.useUserDefaultBrowser);
         } catch (_) {
           // fixes the error: route.continue: Target page, context or browser has been closedError

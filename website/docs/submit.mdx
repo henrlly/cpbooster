@@ -3,7 +3,7 @@ id: submit
 title: Submit
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 `cpbooster` provides the following command to automatically
 **submit** your code to any supported Online Judge. See [Supported Online Judges](#supported-online-judges).
@@ -21,7 +21,7 @@ cpb s <filePath> [url]
 #### Demo
 
 <div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/demos/submit.gif')} />
+  <img alt="test" src={useBaseUrl("/img/demos/submit.gif")} />
 </div>
 
 ## Requirements
@@ -31,7 +31,7 @@ cpb s <filePath> [url]
 - [Configure Language Aliases](#how-to-configure-language-aliases) for each platform and language.
 
 :::note
-`cpbooster` uses a specific chromium binary that gets installed automatically in OS-specific cache
+`cpbooster` uses a specific firefox binary that gets installed automatically in OS-specific cache
 folders:
 
 - `%USERPROFILE%\AppData\Local\ms-playwright` on Windows
@@ -49,7 +49,6 @@ to the Online Judge where you will submit your code.
 ```txt
 cpb login <OnlineJudgeName>
 ```
-
 
 For example, to login to AtCoder I would execute the following command
 
@@ -76,7 +75,6 @@ and session information like any browser does locally (in
 ## How To Specify The URL
 
 When you run `cpb submit` you can provide the `url` in **2** different ways:
-
 
 ### 1. As A Command Argument
 
@@ -105,6 +103,7 @@ int main() {
   ...
 }
 ```
+
 :::important
 This line will be automatically added when you clone a contest with `cpb clone`.
 So, no need to do anything manually during a contest.
@@ -121,11 +120,11 @@ The language alias is the **ID** of the language for each Online Judge.
 See [How To Find Language IDs](#how-to-find-language-ids). For example, in Codeforces,
 the alias for `cpp` can be any of:
 
-|ID| Name|
-|--|-----|
-|42|GNU G++11 5.1.0|
-|50|GNU G++14 6.4.0|
-|54|GNU G++17 7.3.0|
+| ID  | Name            |
+| --- | --------------- |
+| 42  | GNU G++11 5.1.0 |
+| 50  | GNU G++14 6.4.0 |
+| 54  | GNU G++17 7.3.0 |
 
 Let's say we want to submit our `cpp` file using G++17, then
 we should specify it
@@ -155,13 +154,13 @@ like Uva Online Judge.
 For example, in Codeforces and AtCoder you could go to any problem's page like:
 
 - https://atcoder.jp/contests/abc196/tasks/abc196_a
-<div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/atcoder_dropdown.png')} />
-</div>
+  <div className="text--center">
+    <img alt="test" src={useBaseUrl("/img/atcoder_dropdown.png")} />
+  </div>
 - https://codeforces.com/contest/1401/problem/A
-<div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/codeforces_dropdown.png')} />
-</div>
+  <div className="text--center">
+    <img alt="test" src={useBaseUrl("/img/codeforces_dropdown.png")} />
+  </div>
 
 #### 2. Open the inspection tool
 
@@ -169,11 +168,11 @@ Usually to open the inspection tool, you can `right click` in the page,
 and then click on `Inspect`.
 
 <div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/inspect_right_click.png')} />
+  <img alt="test" src={useBaseUrl("/img/inspect_right_click.png")} />
 </div>
 <br />
 <div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/inspect_tool.png')} />
+  <img alt="test" src={useBaseUrl("/img/inspect_tool.png")} />
 </div>
 
 #### 3. Locate the `<select>` tag
@@ -187,7 +186,7 @@ to find the tag faster
 :::
 
 <div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/search_select.png')} />
+  <img alt="test" src={useBaseUrl("/img/search_select.png")} />
 </div>
 
 #### 4. Locate the `value` of the language you wish to use
@@ -196,7 +195,7 @@ For this, we will need to unfold the contents of the `<select>` tag to see
 the options. This is done by clicking on the small arrow to the left.
 
 <div className="text--center">
-  <img alt="test" src={useBaseUrl('/img/select_options.png')} />
+  <img alt="test" src={useBaseUrl("/img/select_options.png")} />
 </div>
 
 The content of the `value` property of each option is what `cpbooster` uses as **Alias**.

@@ -7,8 +7,8 @@
 `cpbooster` is a cross-platform **CLI** tool designed to **boost** competitive programmer's speed during contests by automating various routine tasks like compiling and testing, debugging, cloning testcases, loading template, etc. The console command suits any coding environment (i.e. _**VSCode, Jetbrains IDEs, Vim, Emacs, Geany, Sublime Text, ...**_) and it’s very easy to use. _Vim_ / _NeoVim_ users can install [cpbooster.vim plugin](https://github.com/searleser97/cpbooster.vim) to **boost** their speed even more.
 
 #### Using **NeoVim**:
-![video-demo-min](https://user-images.githubusercontent.com/5056411/112361632-3874dd80-8c99-11eb-8734-95662003b8cf.gif)
 
+![video-demo-min](https://user-images.githubusercontent.com/5056411/112361632-3874dd80-8c99-11eb-8734-95662003b8cf.gif)
 
 ## For Installation and Setup Instructions Visit `cpbooster` [Website](https://searleser97.github.io/cpbooster/)
 
@@ -42,6 +42,7 @@
 1. open your preferred editor in the contest directory immediately after cloning it. See [Editors](https://searleser97.github.io/cpbooster/docs/configuration/#editor-string)
 
 1. **Create** source files with corresponding template loaded
+
    - `cpb create a.py` creates single file with corresponding template loaded based on file extension
    - `cpb create {a..n}.cpp` creates multiple consecutive files from "a.cpp" to "n.cpp"
    - `cpb create {a...n}.cpp` same as previous command (Any amount of dots greater than 1 work)
@@ -77,7 +78,7 @@
 
 - add `--here` option to `cpb clone` to clone testcases in current directory
 - Add Memory Limit Exceeded Veredict (using `gnu-time` as `/usr/bin/time -f '%M' ./program`, can't use `ps` due to lack of precision.
-See https://stackoverflow.com/a/131346/13079132)
+  See https://stackoverflow.com/a/131346/13079132)
 - Add the possibility to test interactive problems
 - Add Stress tests (using brute force solution and tests generator)
 - Add the possibility to test current file using test cases of another file (test --as \<filename> or `cpb test <sourcefile> --with \<testcases_filename>`)
@@ -88,7 +89,6 @@ See https://stackoverflow.com/a/131346/13079132)
 - Open editor in created file right after executing `cpb create <filename>.<ext>`
 - Add option per file type/language to not prepend the `// time-limit: xxx` comment on top of a file of specific type/language.
 - Solve TODOs in code.
-
 
 ## Final Notes
 
